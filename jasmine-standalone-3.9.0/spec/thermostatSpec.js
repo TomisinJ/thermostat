@@ -32,5 +32,14 @@ describe('Thermostat', () => {
     it('starts with Power Save Mode on', () => {
       expect(thermostat.powerSaveMode).toBe(true);
     });
+
+    it('Power Save Mode is on, max temp is 25', () => {
+      expect(thermostat.up(10)).toEqual('In Power Save Mode, max temp exceeded');
+    });
+
+    it('Power Save Mode is off, max temp is 32', () => {
+      thermostat.powerSaveMode = false
+      expect(thermostat.up(15)).toEqual('Maximum temperature reached');
+    });
   });
 });
