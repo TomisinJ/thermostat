@@ -22,5 +22,15 @@ describe('Thermostat', () => {
       thermostat.down(1)
       expect(thermostat.temperature).toEqual(19);
     });
+
+    it('error if below 10', () => {
+      expect(thermostat.down(11)).toEqual('Minimum temperature reached');
+    });
+});
+
+  describe('Power Save Mode', () => {
+    it('starts with Power Save Mode on', () => {
+      expect(thermostat.powerSaveMode).toBe(true);
+    });
   });
 });
