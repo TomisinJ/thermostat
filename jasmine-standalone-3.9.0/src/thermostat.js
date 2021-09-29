@@ -1,5 +1,5 @@
 class Thermostat {
-  constructor(temperature) {
+  constructor(temperature, powerSaveMode) {
     this.temperature = 20;
     this.powerSaveMode = true;
   }
@@ -22,11 +22,35 @@ class Thermostat {
     } else {
       return 'Minimum temperature reached';
     }}
+
+  psmOff() {
+    if (this.powerSaveMode === true) {
+      return this.powerSaveMode = false;   
+    } else if (this.powerSaveMode === false) {
+      return 'Power save Mode is already off ';
+    }}
+    
+  reset() {
+    return this.temperature = 20;
+  }
+
+  energyUsage() {
+    if (this.temperature < 18) {
+      return 'low-usage';
+    }
+    if (this.temperature <= 25) {
+      return 'medium-usage';
+    }
+    if (this.temperature > 25) {
+      return 'high-usage';
+    }
+  }
 }
-
-
 
 let thermostat = new Thermostat
 
 console.log(thermostat.up(15))
+// console.log(thermostat.down(5))
 // console.log(thermostat.down(14))
+console.log(thermostat.psmOff())
+console.log(thermostat.energyUsage())
